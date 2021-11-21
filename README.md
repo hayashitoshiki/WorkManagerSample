@@ -4,7 +4,7 @@ WorkManeger サンプル
 
 
 ## 全体ソース  
-https://github.com/hayashitoshiki/WorkManagerSample/tree/master/app/src/main/java/com/myapp/workmanagersample/ui  
+https://github.com/hayashitoshiki/WorkManagerSample/tree/master/app/src/main/java/com/myapp/workmanagersample 
 
  
 ## WorkManager  
