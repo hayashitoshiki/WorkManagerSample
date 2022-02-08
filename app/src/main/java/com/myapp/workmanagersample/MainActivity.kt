@@ -55,6 +55,12 @@ class MainActivity : ComponentActivity() {
                         ) {
                             Text(text = "処理開始(非同期×続けて実施)")
                         }
+                        Button(
+                            onClick = { viewModel.startLongAsyncWorker() },
+                            modifier = Modifier.padding(top = 10.dp)
+                        ) {
+                            Text(text = "処理開始(10分以上の長時間実施)")
+                        }
                     }
                 }
             }

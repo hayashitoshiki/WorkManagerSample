@@ -2,6 +2,7 @@ package com.myapp.workmanagersample.domain.usecase
 
 import android.util.Log
 import com.myapp.workmanagersample.data.repository.LocalSampleRepository
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 
 class BackgroundSampleUseCaseImpl  @Inject constructor(
@@ -34,6 +35,15 @@ class BackgroundSampleUseCaseImpl  @Inject constructor(
         val list2 = localSampleRepository.getData()
         Log.d("BackgroundSampleUseCaseImpl", "doAsyncBackground 保存データ = $list2")
         localSampleRepository.deleteData()
+        Log.d("BackgroundSampleUseCaseImpl", " doAsyncBackground --- end ---")
+    }
+
+    override suspend fun doLongAsyncBackground() {
+        Log.d("BackgroundSampleUseCaseImpl", "doAsyncBackground --- start ---")
+        for (i in 1..20) {
+            delay(60000)
+            Log.d("BackgroundSampleUseCaseImpl", "doLongAsyncBackground " + i + "分経過")
+        }
         Log.d("BackgroundSampleUseCaseImpl", " doAsyncBackground --- end ---")
     }
 }

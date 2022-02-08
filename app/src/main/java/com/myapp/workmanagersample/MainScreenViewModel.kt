@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.work.*
 import com.myapp.workmanagersample.ui.worker.CountAsyncWorker
 import com.myapp.workmanagersample.ui.worker.CountWorker
+import com.myapp.workmanagersample.ui.worker.LongAsyncWorker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -66,5 +67,18 @@ class MainScreenViewModel @Inject constructor(private val workManager: WorkManag
         val uploadWorkRequest: WorkRequest = OneTimeWorkRequestBuilder<CountAsyncWorker>().build()
         workManager.enqueue(uploadWorkRequest)
         Log.d("MainScreenViewModel", "startAsyncWorker --- 終了 ---")
+    }
+
+    /**
+     * 下記の条件のWorkerを発火する
+     *
+     * ・状態：suspend
+     * ・連投：指定なし(前の処理が走っていても続けて発火）
+     */
+    fun startLongAsyncWorker() {
+        Log.d("MainScreenViewModel", "startLongAsyncWorker --- 開始 ---")
+        val uploadWorkRequest: WorkRequest = OneTimeWorkRequestBuilder<LongAsyncWorker>().build()
+        workManager.enqueue(uploadWorkRequest)
+        Log.d("MainScreenViewModel", "startLongAsyncWorker --- 終了 ---")
     }
 }

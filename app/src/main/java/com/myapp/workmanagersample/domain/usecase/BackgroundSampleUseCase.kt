@@ -6,4 +6,6 @@ interface BackgroundSampleUseCase {
 
     suspend fun doAsyncBackground()
 
+    suspend fun doLongAsyncBackground()
+
 }

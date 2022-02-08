@@ -6,6 +6,7 @@ import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
 import com.myapp.workmanagersample.domain.usecase.BackgroundSampleUseCase
+import com.myapp.workmanagersample.ui.util.PushManager
 import javax.inject.Inject
 
 /**
@@ -16,7 +17,8 @@ import javax.inject.Inject
  * @property backgroundSampleUseCase
  */
 class CustomWorkerFactory @Inject constructor(
-    private val backgroundSampleUseCase: BackgroundSampleUseCase
+    private val backgroundSampleUseCase: BackgroundSampleUseCase,
+    private val pushManager: PushManager
 ) : WorkerFactory() {
 
     override fun createWorker(
@@ -33,6 +35,10 @@ class CustomWorkerFactory @Inject constructor(
             // CountAsyncWorker
             CountAsyncWorker::class.java.name -> {
                 CountAsyncWorker(appContext, workerParameters, backgroundSampleUseCase)
+            }
+            // LongAsyncWorker
+            LongAsyncWorker::class.java.name -> {
+                LongAsyncWorker(appContext, workerParameters, backgroundSampleUseCase, pushManager)
             }
             // TODO : Workerが増える毎にここに追加していく
             // その他
