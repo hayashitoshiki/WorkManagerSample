@@ -29,7 +29,7 @@ class PushManager @Inject constructor(private val context: Context){
     private val notificationManager: NotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
 
-    // 通知表示
+    // LongAsyncWorker用通知表示
     fun createForegroundInfoNotification() : Notification {
         createNotificationChannel(CHANNELS.CHANNEL1)
         return NotificationCompat.Builder(context, CHANNELS.CHANNEL1.id)
@@ -38,6 +38,17 @@ class PushManager @Inject constructor(private val context: Context){
             .setOngoing(true)
             .build()
     }
+
+    // NotificationUpdateWorker用通知表示
+    fun createAsyncForegroundInfoNotification(count: String) : Notification {
+        createNotificationChannel(CHANNELS.CHANNEL1)
+        return NotificationCompat.Builder(context, CHANNELS.CHANNEL1.id)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setContentTitle(count + "分経過しました。")
+            .setOngoing(true)
+            .build()
+    }
+
 
     // チャンネル登録
     private fun createNotificationChannel(channel: CHANNELS) {

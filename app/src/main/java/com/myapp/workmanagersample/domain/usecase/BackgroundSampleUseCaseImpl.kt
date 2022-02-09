@@ -46,4 +46,14 @@ class BackgroundSampleUseCaseImpl  @Inject constructor(
         }
         Log.d("BackgroundSampleUseCaseImpl", " doAsyncBackground --- end ---")
     }
+
+    override suspend fun doNotificationUpdateBackground() {
+        Log.d("BackgroundSampleUseCaseImpl", "doNotificationUpdateBackground --- start ---")
+        for (i in 1..20) {
+            delay(60000)
+            Log.d("BackgroundSampleUseCaseImpl", "doNotificationUpdateBackground " + i + "分経過")
+        }
+        Log.d("BackgroundSampleUseCaseImpl", " doNotificationUpdateBackground --- end ---")
+    }
+
 }

@@ -8,4 +8,6 @@ interface BackgroundSampleUseCase {
 
     suspend fun doLongAsyncBackground()
 
+    suspend fun doNotificationUpdateBackground()
+
 }

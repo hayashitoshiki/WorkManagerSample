@@ -40,6 +40,10 @@ class CustomWorkerFactory @Inject constructor(
             LongAsyncWorker::class.java.name -> {
                 LongAsyncWorker(appContext, workerParameters, backgroundSampleUseCase, pushManager)
             }
+            // NotificationUpdateWorker
+            NotificationUpdateWorker::class.java.name -> {
+                NotificationUpdateWorker(appContext, workerParameters, backgroundSampleUseCase, pushManager)
+            }
             // TODO : Workerが増える毎にここに追加していく
             // その他
             else -> null

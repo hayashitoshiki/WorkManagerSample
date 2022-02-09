@@ -61,6 +61,12 @@ class MainActivity : ComponentActivity() {
                         ) {
                             Text(text = "処理開始(10分以上の長時間実施)")
                         }
+                        Button(
+                            onClick = { viewModel.startNotificationUpdateWorker() },
+                            modifier = Modifier.padding(top = 10.dp)
+                        ) {
+                            Text(text = "処理開始(10分以上でかつ更新される長時間実施)")
+                        }
                     }
                 }
             }
